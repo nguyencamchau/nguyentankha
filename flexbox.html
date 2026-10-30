@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minh họa Flexbox CSS</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 25px;
+            background-color: #f3f6fa;
+            color: #333;
+        }
+
+        h1 {
+            color: #173b68;
+            text-align: center;
+        }
+
+        h2 {
+            color: #245b91;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 8px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .demo {
+            background-color: white;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #00000015;
+        }
+
+        .flex-container {
+            display: flex;
+            background-color: #e3edf8;
+            border: 2px dashed #4285c5;
+            padding: 15px;
+            min-height: 130px;
+            border-radius: 8px;
+        }
+
+        .item {
+            background-color: #2878c7;
+            color: white;
+            font-weight: bold;
+            padding: 20px;
+            text-align: center;
+            border-radius: 6px;
+            min-width: 75px;
+        }
+
+        /* Ví dụ 1: flex-direction: row */
+        .row-demo {
+            flex-direction: row;
+            gap: 15px;
+        }
+
+        /* Ví dụ 2: flex-direction: column */
+        .column-demo {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Ví dụ 3: justify-content */
+        .justify-demo {
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        /* Ví dụ 4: align-items */
+        .align-demo {
+            flex-direction: row;
+            align-items: center;
+            gap: 15px;
+            height: 200px;
+        }
+
+        .align-demo .item:nth-child(1) {
+            height: 50px;
+        }
+
+        .align-demo .item:nth-child(2) {
+            height: 90px;
+        }
+
+        .align-demo .item:nth-child(3) {
+            height: 120px;
+        }
+
+        /* Ví dụ 5: gap */
+        .gap-demo {
+            flex-direction: row;
+            gap: 30px;
+        }
+
+        .code {
+            background-color: #263238;
+            color: #a5e8b5;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: Consolas, monospace;
+            margin-top: 12px;
+            line-height: 1.6;
+        }
+
+        .note {
+            background-color: #fff4d6;
+            padding: 12px;
+            border-left: 4px solid #e6a700;
+            margin-top: 15px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>FLEXBOX – BỐ CỤC MỘT CHIỀU</h1>
+
+    <p>
+        Flexbox phù hợp để sắp xếp các phần tử theo một hàng
+        hoặc một cột.
+    </p>
+
+    <p>
+        Bắt đầu bằng <b>display: flex</b>.
+    </p>
+
+    <!-- Ví dụ 1 -->
+    <div class="demo">
+        <h2>1. display: flex và flex-direction: row</h2>
+
+        <p>
+            Sắp xếp các phần tử theo chiều ngang (từ trái sang phải).
+        </p>
+
+        <div class="flex-container row-demo">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+        </div>
+
+        <div class="code">
+            display: flex;<br>
+            flex-direction: row;<br>
+            gap: 15px;
+        </div>
+    </div>
+
+    <!-- Ví dụ 2 -->
+    <div class="demo">
+        <h2>2. flex-direction: column</h2>
+
+        <p>
+            Sắp xếp các phần tử theo chiều dọc (từ trên xuống dưới).
+        </p>
+
+        <div class="flex-container column-demo">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+        </div>
+
+        <div class="code">
+            display: flex;<br>
+            flex-direction: column;<br>
+            gap: 10px;
+        </div>
+    </div>
+
+    <!-- Ví dụ 3 -->
+    <div class="demo">
+        <h2>3. justify-content</h2>
+
+        <p>
+            Điều khiển vị trí các phần tử theo trục chính.
+            Ví dụ: space-between.
+        </p>
+
+        <div class="flex-container justify-demo">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+        </div>
+
+        <div class="code">
+            display: flex;<br>
+            justify-content: space-between;
+        </div>
+    </div>
+
+    <!-- Ví dụ 4 -->
+    <div class="demo">
+        <h2>4. align-items</h2>
+
+        <p>
+            Điều khiển vị trí các phần tử theo trục phụ.
+            Ví dụ: center.
+        </p>
+
+        <div class="flex-container align-demo">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+        </div>
+
+        <div class="code">
+            display: flex;<br>
+            align-items: center;
+        </div>
+    </div>
+
+    <!-- Ví dụ 5 -->
+    <div class="demo">
+        <h2>5. gap</h2>
+
+        <p>
+            Tạo khoảng cách giữa các phần tử trong Flexbox.
+        </p>
+
+        <div class="flex-container gap-demo">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+        </div>
+
+        <div class="code">
+            display: flex;<br>
+            gap: 30px;
+        </div>
+    </div>
+
+    <div class="note">
+        <b>Ghi nhớ:</b>
+        <ul>
+            <li>display: flex: kích hoạt Flexbox.</li>
+            <li>flex-direction: xác định hướng sắp xếp.</li>
+            <li>justify-content: căn chỉnh theo trục chính.</li>
+            <li>align-items: căn chỉnh theo trục phụ.</li>
+            <li>gap: tạo khoảng cách giữa các phần tử.</li>
+        </ul>
+    </div>
+
+    <footer>
+        Bài thực hành CSS3 – Flexbox
+    </footer>
+
+</div>
+
+</body>
+</html>
