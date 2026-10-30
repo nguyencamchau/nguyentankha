@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minh họa Position trong CSS</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f2f5f9;
+            color: #333;
+        }
+
+        h1 {
+            color: #1e4978;
+            text-align: center;
+        }
+
+        h2 {
+            color: #1e4978;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+        .section {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #ccc;
+        }
+
+        /* 1. POSITION: STATIC */
+        .static-box {
+            position: static;
+            background-color: #d9ecff;
+            border: 2px solid #2980b9;
+            padding: 20px;
+            width: 250px;
+        }
+
+        /* 2. POSITION: RELATIVE */
+        .relative-box {
+            position: relative;
+            top: 20px;
+            left: 30px;
+            background-color: #d5f5e3;
+            border: 2px solid #27ae60;
+            padding: 20px;
+            width: 250px;
+        }
+
+        /* 3. POSITION: ABSOLUTE */
+        .parent {
+            position: relative;
+            height: 180px;
+            background-color: #fce4ec;
+            border: 2px dashed #e91e63;
+            padding: 15px;
+        }
+
+        .absolute-box {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #f8c471;
+            border: 2px solid #e67e22;
+            padding: 15px;
+            width: 180px;
+        }
+
+        /* 4. POSITION: FIXED */
+        .fixed-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            background-color: #1e4978;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 0 0 0 10px;
+            z-index: 1000;
+        }
+
+        .note {
+            background-color: #fff3cd;
+            padding: 12px;
+            border-left: 5px solid #ffc107;
+            margin-top: 15px;
+        }
+
+        .example {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .spacer {
+            height: 350px;
+            background-color: #eef2f7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- MENU FIXED -->
+    <div class="fixed-menu">
+        MENU FIXED
+    </div>
+
+    <h1>MINH HỌA POSITION TRONG CSS</h1>
+
+    <div class="container">
+
+        <!-- 1. STATIC -->
+        <div class="section">
+            <h2>1. Position: Static</h2>
+
+            <p>
+                Đây là vị trí mặc định của các phần tử HTML.
+                Phần tử hiển thị theo thứ tự bình thường của trang.
+            </p>
+
+            <div class="example">
+                <div class="static-box">
+                    BOX STATIC
+                </div>
+            </div>
+
+            <div class="note">
+                <b>Đặc điểm:</b>
+                Không bị dịch chuyển bởi top, right, bottom hoặc left.
+            </div>
+
+            <pre>
+.box {
+    position: static;
+}
+            </pre>
+        </div>
+
+
+        <!-- 2. RELATIVE -->
+        <div class="section">
+            <h2>2. Position: Relative</h2>
+
+            <p>
+                Phần tử được dịch chuyển tương đối so với vị trí
+                ban đầu của chính nó.
+            </p>
+
+            <div class="example">
+                <div class="relative-box">
+                    BOX RELATIVE
+                </div>
+            </div>
+
+            <div class="note">
+                <b>Đặc điểm:</b>
+                Hộp được dịch xuống 20px và sang phải 30px.
+                Vị trí ban đầu vẫn được giữ lại trong bố cục.
+            </div>
+
+            <pre>
+.box {
+    position: relative;
+    top: 20px;
+    left: 30px;
+}
+            </pre>
+        </div>
+
+
+        <!-- 3. ABSOLUTE -->
+        <div class="section">
+            <h2>3. Position: Absolute</h2>
+
+            <p>
+                Phần tử được định vị theo phần tử cha gần nhất
+                có position khác static.
+            </p>
+
+            <div class="parent">
+
+                <b>PHẦN TỬ CHA (position: relative)</b>
+
+                <div class="absolute-box">
+                    BOX ABSOLUTE
+                </div>
+
+            </div>
+
+            <div class="note">
+                <b>Đặc điểm:</b>
+                Hộp màu cam nằm cách cạnh trên 20px và cạnh phải
+                20px của phần tử cha.
+            </div>
+
+            <pre>
+.parent {
+    position: relative;
+}
+
+.child {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+            </pre>
+        </div>
+
+
+        <!-- 4. FIXED -->
+        <div class="section">
+            <h2>4. Position: Fixed</h2>
+
+            <p>
+                Phần tử được cố định theo cửa sổ trình duyệt.
+                Khi cuộn trang, phần tử vẫn giữ nguyên vị trí.
+            </p>
+
+            <div class="note">
+                <b>Quan sát:</b>
+                Hãy cuộn trang xuống dưới và chú ý menu
+                màu xanh ở góc trên bên phải màn hình.
+            </div>
+
+            <pre>
+.menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+            </pre>
+        </div>
+
+        <!-- KHU VỰC CUỘN TRANG -->
+        <div class="section">
+            <h2>5. Thử cuộn trang</h2>
+
+            <p>
+                Cuộn trang để kiểm tra hoạt động của
+                position: fixed.
+            </p>
+
+            <div class="spacer">
+                KHU VỰC CUỘN TRANG
+            </div>
+
+            <div class="spacer">
+                MENU FIXED VẪN GIỮ NGUYÊN VỊ TRÍ
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
